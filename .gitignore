@@ -10,9 +10,10 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
-*.*
+?.*
 artisan
 composer*
 phpunit.xml
 server.php
 webpack.mix.js
+package.json
