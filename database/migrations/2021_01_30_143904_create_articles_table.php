@@ -20,6 +20,7 @@ class CreateArticlesTable extends Migration
             $table->biginteger('user_id');
             $table->foreign('user_id')->reference('id')->on('users');
             $table->timestamps();
+
         });
     }
 
