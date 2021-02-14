@@ -6,6 +6,9 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
+use App\Mail\BareMail;
+use App\Notifications\PasswordResetNotification;
+
 class User extends Authenticatable
 {
     use Notifiable;
