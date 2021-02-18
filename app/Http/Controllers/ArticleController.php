@@ -66,6 +66,30 @@ class ArticleController extends Controller
         return view('articles.show', ['article' => $article]);
     }
 
+    // いいねボタンの登録と解除
+    public function like(Request $request, Article $article)
+    {
+      $article->lekes()->detach($request->user()->id);
+      $article->lekes()->attach($request->user()->id);
+
+      return [
+        'id' => $article->id,
+        'countLikes' => $article->count_likes,
+      ];
+    }
+
+
+    public function unlike(Request $request, Article $article)
+    {
+      $article->lekes()->detach($request->user()->id);
+
+      return [
+        'id' => $article->id,
+        'countLikes' => $article->count_likes,
+      ];
+    }
+
+
     /**
      * Show the form for editing the specified resource.
      *

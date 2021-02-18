@@ -20,7 +20,7 @@ class Article extends Model
 
     public function likes(): BelongsToMany
     {
-      return $this->belongsToMany('App\User', 'likes')->whisTimestamps();
+      return $this->belongsToMany('App\User', 'likes')->withTimestamps();
     }
 
     public function isLikedBy(?User $user): bool
@@ -28,5 +28,10 @@ class Article extends Model
       return $user
         ?(bool)$this->likes->where('id', '$user->id')->count()
         :false;
+    }
+
+    public function getCountLikesAttribute(): int
+    {
+      return $this->likes->count();
     }
 }
