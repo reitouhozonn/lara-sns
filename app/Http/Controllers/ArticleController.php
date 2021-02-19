@@ -69,8 +69,8 @@ class ArticleController extends Controller
     // いいねボタンの登録と解除
     public function like(Request $request, Article $article)
     {
-      $article->lekes()->detach($request->user()->id);
-      $article->lekes()->attach($request->user()->id);
+      $article->likes()->detach($request->user()->id);
+      $article->likes()->attach($request->user()->id);
 
       return [
         'id' => $article->id,
@@ -81,7 +81,7 @@ class ArticleController extends Controller
 
     public function unlike(Request $request, Article $article)
     {
-      $article->lekes()->detach($request->user()->id);
+      $article->likes()->detach($request->user()->id);
 
       return [
         'id' => $article->id,
