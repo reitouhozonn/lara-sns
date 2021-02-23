@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 use App\User;
+use App\Tag;
 
 class Article extends Model
 {
@@ -38,5 +39,10 @@ class Article extends Model
     public function getCountLikesAttribute(): int
     {
       return $this->likes->count();
+    }
+
+    public function tags(): BelongsToMany
+    {
+      return $this->belongsToMany('App\Tag')->withTimestamps();
     }
 }
