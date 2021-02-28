@@ -8,7 +8,7 @@
         <follow-button
           class="ml-auto"
           :initial-is-followed-by='@json($user->isFollowedBy(Auth::user()))'
-          :authorized='@json(Auth::check())'
+          :authorizen='@json(Auth::check())'
           endpoint="{{ route('users.follow', ['name' => $user->name]) }}"
         >
         </follow-button>
@@ -22,10 +22,10 @@
   </div>
   <div class="card-body">
     <div class="card-text">
-      <a href="" class="text-muted">
+      <a href="{{ route('users.followings', ['name' => $user->name]) }}" class="text-muted">
         {{ $user->count_followings }} フォロー
       </a>
-      <a href="" class="text-muted">
+      <a href="{{ route('users.followers', ['name' => $user->name]) }}" class="text-muted">
         {{ $user->count_followers }} フォロワー
       </a>
     </div>
