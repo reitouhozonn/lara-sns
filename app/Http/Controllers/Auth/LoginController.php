@@ -57,5 +57,11 @@ class LoginController extends Controller
         $this->guard()->login($user, true);
         return $this->sendLoginResponse($request);
       }
+
+      return redirect()->route('register.{provider}', [
+        'provider' => $provider,
+        'email' => $providerUser->getEmail(),
+        'token' => $providerUser->token,
+      ]);
     }
 }
